@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>game arena</title>
+  <link rel="stylesheet" href="css/gameArena.css">
+</head>
+
+<body>
+
+  <main>
+    <div class="container">
+      <% for(let i=0;i<22;i++) { %>
+      <div class="row" id="player-1-row-<%= i%>">
+        <% for(let j=0;j<15;j++){ %>
+        <div class="column" id="player-1-column-<%= j%>"></div>
+        <% } %>
+      </div>
+      <% } %>
+    </div>
+
+  </main>
+
+  <script src="js/gameArena.js"></script>
+</body>
+
+</html>

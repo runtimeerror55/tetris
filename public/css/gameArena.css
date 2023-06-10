@@ -1,0 +1,38 @@
+* {
+      box-sizing: border-box;
+      margin: 0;
+      border: none;
+}
+body {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            url("images/homePageBackgroundImage.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+}
+
+.row {
+      display: flex;
+}
+.column {
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgb(43, 39, 39);
+      margin: 1px;
+}
+
+.container {
+      background-color: rgba(12, 12, 12);
+      border: 5px solid rgba(0, 255, 255, 1);
+}
+
+#hello {
+      background-color: red;
+}
