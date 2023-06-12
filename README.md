@@ -19,11 +19,14 @@ client side js
 1. move down
 2. move right
 3. move left
-4. generate binaryMatrix
 5. generate board nodes matrix
 6. destroy
 7. ui renderer
 8. shifting blocks
+9. update the binary matrix
+10. isPossibletoMove
+11. update score
+12. update currentTetromino
 
 
 ## 2. static methods
@@ -31,6 +34,7 @@ client side js
 2. end the game
 3. reset the game
 4. 500 random generated tetrominos
+5. generate binaryMatrix
 
 # playerfunctionalities
 ## 1. properties
