@@ -13,7 +13,30 @@ client side js
 2. renderer
 3. game intitialisation
 
-1. protected coordinates object
-2. random value for coordinates object
-3. protected player number
-4. current coordinates
+
+# game functionalities
+## 1. inherited methods
+1. move down
+2. move right
+3. move left
+4. generate binaryMatrix
+5. generate board nodes matrix
+6. destroy
+7. ui renderer
+8. shifting blocks
+
+
+## 2. static methods
+1. start the game
+2. end the game
+3. reset the game
+4. 500 random generated tetrominos
+
+# playerfunctionalities
+## 1. properties
+1. current tetromino
+2. score
+3. player number
+4. binaryMatrix
+5. borad nodes matrix
+6. inherited methods from game functionalities
