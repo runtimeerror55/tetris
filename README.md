@@ -29,12 +29,7 @@ client side js
 12. update currentTetromino
 
 
-## 2. static methods
-1. start the game
-2. end the game
-3. reset the game
-4. 500 random generated tetrominos
-5. generate binaryMatrix
+
 
 # playerfunctionalities
 ## 1. properties
@@ -44,3 +39,10 @@ client side js
 4. binaryMatrix
 5. borad nodes matrix
 6. inherited methods from game functionalities
+
+ ## 2. static methods
+1. start the game
+2. end the game
+3. reset the game
+4. 500 random generated tetrominos
+5. generate binaryMatrix
