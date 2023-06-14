@@ -5,12 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>game arena</title>
-  <link rel="stylesheet" href="css/gameArena.css">
+  <link rel="stylesheet" href="/css/gameArena.css">
 </head>
 
 <body>
 
   <main>
+    <div id="game-info">
+      <div class="info-item">name
+        <div>aakash</div>
+      </div>
+
+      <div class="info-item">Score: 25</div>
+
+      <div class="info-item">1X blast: 0</div>
+      <div class="info-item">2X blast: 1</div>
+      <div class="info-item">3X blast: 2</div>
+      <div class="info-item">4X blast: 0</div>
+    </div>
     <div class="container">
       <% for(let i=0;i<22;i++) { %>
       <div class="row" id="player-1-row-<%= i%>">
@@ -21,9 +33,13 @@
       <% } %>
     </div>
 
+
+
   </main>
 
-  <script src="js/gameArena.js"></script>
+  <script src="/js/gameArena/gameConfiguration.js"></script>
+  <script src="/js/gameArena/controllers/uiRender.js"></script>
+  <script src="/js/gameArena/controllers/userInputs.js"></script>
 </body>
 
 </html>
