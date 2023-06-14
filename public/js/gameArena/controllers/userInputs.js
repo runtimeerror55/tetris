@@ -78,7 +78,7 @@ class playerInputsController extends Ui {
                         (coordinates) => {
                               return (
                                     !this.playerBoardInBinary[
-                                          coordinates[0] * 15 +
+                                          coordinates[0] * 16 +
                                                 coordinates[1] -
                                                 1
                                     ] && coordinates[1] > 0
@@ -90,7 +90,7 @@ class playerInputsController extends Ui {
                         (coordinates) => {
                               return (
                                     !this.playerBoardInBinary[
-                                          coordinates[0] * 15 +
+                                          coordinates[0] * 16 +
                                                 coordinates[1] +
                                                 1
                                     ] && coordinates[1] < 14
@@ -102,9 +102,9 @@ class playerInputsController extends Ui {
                         (coordinates) => {
                               return (
                                     !this.playerBoardInBinary[
-                                          coordinates[0] * 15 +
+                                          coordinates[0] * 16 +
                                                 coordinates[1] +
-                                                15
+                                                16
                                     ] && coordinates[0] < 21
                               );
                         }
@@ -113,7 +113,7 @@ class playerInputsController extends Ui {
                   return this.currentTetromino.allCoordinates.every(
                         (coordinates) => {
                               return !this.playerBoardInBinary[
-                                    coordinates[0] * 15 + coordinates[1]
+                                    coordinates[0] * 16 + coordinates[1]
                               ];
                         }
                   );
@@ -143,7 +143,7 @@ class Player extends playerInputsController {
       createPlayerBoardBinaryArray() {
             this.playerBoardInBinary = [];
             for (let i = 0; i < 22; i++) {
-                  for (let j = 0; j < 15; j++) {
+                  for (let j = 0; j < 16; j++) {
                         this.playerBoardInBinary.push(0);
                   }
             }
@@ -151,7 +151,7 @@ class Player extends playerInputsController {
 
       refreshBinaryMatrix() {
             for (let i = 0; i < 22; i++) {
-                  for (let j = 0; j < 15; j++) {
+                  for (let j = 0; j < 16; j++) {
                         this.binaryMatrix[i][j] = 0;
                   }
             }
@@ -159,8 +159,9 @@ class Player extends playerInputsController {
       updateplayerBoardInBinary() {
             this.currentTetromino.allCoordinates.forEach((coordinates) => {
                   this.playerBoardInBinary[
-                        coordinates[0] * 15 + coordinates[1]
+                        coordinates[0] * 16 + coordinates[1]
                   ] = 1;
+                  this.playerBoardInBinary[coordinates[0] * 16 + 15]++;
             });
       }
       updateCurrentTetromino() {
@@ -206,4 +207,38 @@ class Player extends playerInputsController {
       }
 }
 
-let playerone = new Player();
+let x = [];
+for (let i = 0; i < 22; i++) {
+      x[i] = [];
+      for (let j = 0; j < 16; j++) {
+            x[i].push(0);
+      }
+}
+
+let y = [];
+
+for (let i = 0; i < 22; i++) {
+      for (let j = 0; j < 16; j++) {
+            y.push(0);
+      }
+}
+
+function startxx() {
+      let start = Date.now();
+      for (let i = 0; i < 22; i++) {
+            for (let j = 0; j < 16; j++) {
+                  x[i][j] = 1;
+            }
+      }
+      let end = Date.now();
+      console.log(end - start);
+}
+
+function starty() {
+      let start = Date.now();
+      for (let i = 0; i < 22 * 16; i++) {
+            y[i] = 1;
+      }
+      let end = Date.now();
+      console.log(end - start);
+}
