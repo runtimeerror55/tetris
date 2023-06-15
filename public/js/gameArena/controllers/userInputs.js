@@ -77,11 +77,10 @@ class playerInputsController extends Ui {
                   return this.currentTetromino.allCoordinates.every(
                         (coordinates) => {
                               return (
-                                    !this.playerBoardInBinary[
-                                          coordinates[0] * 16 +
-                                                coordinates[1] -
-                                                1
-                                    ] && coordinates[1] > 0
+                                    coordinates[1] > 0 &&
+                                    !this.playerBoardMatrix[coordinates[0]][
+                                          coordinates[1] - 1
+                                    ].colorClass
                               );
                         }
                   );
@@ -89,11 +88,10 @@ class playerInputsController extends Ui {
                   return this.currentTetromino.allCoordinates.every(
                         (coordinates) => {
                               return (
-                                    !this.playerBoardInBinary[
-                                          coordinates[0] * 16 +
-                                                coordinates[1] +
-                                                1
-                                    ] && coordinates[1] < 14
+                                    coordinates[1] < 14 &&
+                                    !this.playerBoardMatrix[coordinates[0]][
+                                          coordinates[1] + 1
+                                    ].colorClass
                               );
                         }
                   );
@@ -101,20 +99,19 @@ class playerInputsController extends Ui {
                   return this.currentTetromino.allCoordinates.every(
                         (coordinates) => {
                               return (
-                                    !this.playerBoardInBinary[
-                                          coordinates[0] * 16 +
-                                                coordinates[1] +
-                                                16
-                                    ] && coordinates[0] < 21
+                                    coordinates[0] < 21 &&
+                                    !this.playerBoardMatrix[coordinates[0] + 1][
+                                          coordinates[1]
+                                    ].colorClass
                               );
                         }
                   );
             } else if ("setStartingPosition") {
                   return this.currentTetromino.allCoordinates.every(
                         (coordinates) => {
-                              return !this.playerBoardInBinary[
-                                    coordinates[0] * 16 + coordinates[1]
-                              ];
+                              return !this.playerBoardMatrix[coordinates[0]][
+                                    coordinates[1]
+                              ].colorClass;
                         }
                   );
             }
@@ -126,25 +123,31 @@ class Player extends playerInputsController {
       score;
       number;
       currentTetrominoIndex;
-      playerBoardInBinary;
+      playerBoardMatrix;
       count;
-      playerBoardAllNodes;
       constructor() {
             super();
             this.score = 0;
             this.number = 1;
             this.currentTetrominoIndex = 0;
-            this.createPlayerBoardBinaryArray();
+            this.createPlayerBoardMatrix();
             this.count = 0;
-            this.playerBoardAllNodes = document.querySelectorAll(".column");
             this.updateCurrentTetromino();
             this.setStartingPosition();
       }
-      createPlayerBoardBinaryArray() {
-            this.playerBoardInBinary = [];
+      createPlayerBoardMatrix() {
+            this.playerBoardMatrix = [];
+
             for (let i = 0; i < 22; i++) {
-                  for (let j = 0; j < 16; j++) {
-                        this.playerBoardInBinary.push(0);
+                  this.playerBoardMatrix[i] = [];
+                  const rowColumnNodes = document.querySelectorAll(
+                        `#player-1-row-${i} .column`
+                  );
+                  for (let j = 0; j < 15; j++) {
+                        this.playerBoardMatrix[i].push({
+                              node: rowColumnNodes[j],
+                              colorClass: "",
+                        });
                   }
             }
       }
@@ -156,12 +159,11 @@ class Player extends playerInputsController {
                   }
             }
       }
-      updateplayerBoardInBinary() {
+      updateplayerBoardMatrix() {
             this.currentTetromino.allCoordinates.forEach((coordinates) => {
-                  this.playerBoardInBinary[
-                        coordinates[0] * 16 + coordinates[1]
-                  ] = 1;
-                  this.playerBoardInBinary[coordinates[0] * 16 + 15]++;
+                  this.playerBoardMatrix[coordinates[0]][
+                        coordinates[1]
+                  ].colorClass = this.currentTetromino.colorClass;
             });
       }
       updateCurrentTetromino() {
@@ -191,7 +193,7 @@ class Player extends playerInputsController {
                         playerone.moveDown();
                         this.count = 0;
                   } else {
-                        this.updateplayerBoardInBinary();
+                        this.updateplayerBoardMatrix();
                         this.updateCurrentTetromino();
                         if (this.isPossibleToMove("setStartingPosition")) {
                               this.setStartingPosition();
@@ -205,40 +207,4 @@ class Player extends playerInputsController {
             }
             requestAnimationFrame(this.start.bind(this));
       }
-}
-
-let x = [];
-for (let i = 0; i < 22; i++) {
-      x[i] = [];
-      for (let j = 0; j < 16; j++) {
-            x[i].push(0);
-      }
-}
-
-let y = [];
-
-for (let i = 0; i < 22; i++) {
-      for (let j = 0; j < 16; j++) {
-            y.push(0);
-      }
-}
-
-function startxx() {
-      let start = Date.now();
-      for (let i = 0; i < 22; i++) {
-            for (let j = 0; j < 16; j++) {
-                  x[i][j] = 1;
-            }
-      }
-      let end = Date.now();
-      console.log(end - start);
-}
-
-function starty() {
-      let start = Date.now();
-      for (let i = 0; i < 22 * 16; i++) {
-            y[i] = 1;
-      }
-      let end = Date.now();
-      console.log(end - start);
 }

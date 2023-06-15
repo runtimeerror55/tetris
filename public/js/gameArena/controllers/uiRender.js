@@ -1,7 +1,7 @@
 class Ui {
       toggleClass(coordinates) {
-            this.playerBoardAllNodes[
-                  coordinates[0] * 15 + coordinates[1]
-            ].classList.toggle(this.currentTetromino.colorClass);
+            this.playerBoardMatrix[coordinates[0]][
+                  coordinates[1]
+            ].node.classList.toggle(this.currentTetromino.colorClass);
       }
 }
