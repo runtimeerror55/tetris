@@ -1,7 +1,7 @@
-class Ui {
+class VisualUpdate extends Destroy {
       toggleClass(coordinates) {
-            this.playerBoardMatrix[coordinates[0]][
-                  coordinates[1]
-            ].node.classList.toggle(this.currentTetromino.colorClass);
+            const temporary =
+                  this.playerBoardMatrix[coordinates[0]][coordinates[1]];
+            temporary.node.classList.toggle(this.currentTetromino.colorClass);
       }
 }

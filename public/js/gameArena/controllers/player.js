@@ -22,11 +22,15 @@ class Player extends playerInputsController {
                   const rowColumnNodes = document.querySelectorAll(
                         `#player-1-row-${i} .column`
                   );
-                  for (let j = 0; j < 15; j++) {
-                        this.playerBoardMatrix[i].push({
-                              node: rowColumnNodes[j],
-                              colorClass: "",
-                        });
+                  for (let j = 0; j < 16; j++) {
+                        if (j == 15) {
+                              this.playerBoardMatrix[i].push(0);
+                        } else {
+                              this.playerBoardMatrix[i].push({
+                                    node: rowColumnNodes[j],
+                                    colorClass: "",
+                              });
+                        }
                   }
             }
       }
@@ -43,6 +47,7 @@ class Player extends playerInputsController {
                   this.playerBoardMatrix[coordinates[0]][
                         coordinates[1]
                   ].colorClass = this.currentTetromino.colorClass;
+                  this.playerBoardMatrix[coordinates[0]][15]++;
             });
       }
       updateCurrentTetromino() {
@@ -73,6 +78,11 @@ class Player extends playerInputsController {
                         this.count = 0;
                   } else {
                         this.updateplayerBoardMatrix();
+                        const destroyableRows =
+                              this.areThereAnydestroyableRows();
+                        if (destroyableRows) {
+                              this.destroy(destroyableRows);
+                        }
                         this.updateCurrentTetromino();
                         if (this.isPossibleToMove("setStartingPosition")) {
                               this.setStartingPosition();

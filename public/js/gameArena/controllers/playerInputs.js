@@ -1,4 +1,4 @@
-class playerInputsController extends Ui {
+class playerInputsController extends VisualUpdate {
       constructor() {
             super();
             this.createInputEventListeners();
@@ -6,29 +6,33 @@ class playerInputsController extends Ui {
 
       createInputEventListeners() {
             const body = document.querySelector("body");
-            body.addEventListener(
-                  "keydown",
-                  playerInputsController.handleKeyDown
-            );
+            body.addEventListener("keydown", this.handleKeyDown.bind(this));
       }
 
-      static handleKeyDown(e) {
+      handleKeyDown(e) {
             if (e.key == "ArrowRight") {
                   playerone.moveRight();
             } else if (e.key == "ArrowLeft") {
                   playerone.moveLeft();
             } else if (e.key == "ArrowDown") {
                   playerone.moveDown();
+            } else if (e.key == " ") {
+                  const setOfrotatedCoordinates = this.isRotationPossible();
+
+                  if (setOfrotatedCoordinates) {
+                        this.rotate(setOfrotatedCoordinates);
+                  }
             }
       }
       moveRight() {
             if (this.isPossibleToMove("ArrowRight")) {
-                  this.currentTetromino.allCoordinates.forEach(
-                        (coordinates) => {
-                              this.toggleClass(coordinates);
-                              coordinates[1]++;
-                        }
-                  );
+                  const x = this.currentTetromino;
+                  const y = this.playerBoardMatrix;
+                  x.allCoordinates.forEach((z) => {
+                        const cell = y[z[0]][z[1]];
+                        cell.node.classList.toggle(x.colorClass);
+                        z[1]++;
+                  });
 
                   this.currentTetromino.allCoordinates.forEach(
                         (coordinates) => {
@@ -116,5 +120,40 @@ class playerInputsController extends Ui {
                   );
             }
             return false;
+      }
+
+      isRotationPossible() {
+            const x = this.currentTetromino.allCoordinates;
+            const y = this.playerBoardMatrix;
+            const setOfrotatedCoordinates = x.map((coordinates) => {
+                  return [
+                        coordinates[1] - x[0][1] + x[0][0],
+                        -(coordinates[0] - x[0][0]) + x[0][1],
+                  ];
+            });
+
+            const output = setOfrotatedCoordinates.every((coordinates) => {
+                  return (
+                        coordinates[0] < 22 &&
+                        coordinates[0] > -1 &&
+                        coordinates[1] < 14 &&
+                        coordinates[1] > -1 &&
+                        !y[coordinates[0]][coordinates[1]].colorClass
+                  );
+            });
+            if (output) {
+                  return setOfrotatedCoordinates;
+            } else {
+                  return false;
+            }
+      }
+      rotate(setOfrotatedCoordinates) {
+            this.currentTetromino.allCoordinates.forEach((coordinates) => {
+                  this.toggleClass(coordinates);
+            });
+            setOfrotatedCoordinates.forEach((coordinates) => {
+                  this.toggleClass(coordinates);
+            });
+            this.currentTetromino.allCoordinates = setOfrotatedCoordinates;
       }
 }
