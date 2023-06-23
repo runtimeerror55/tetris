@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/landing.css">
+
+</head>
+
+
+<body>
+
+
+
+  <nav class="navbar">
+    <div id="logo">TETRIS</div>
+    <div id="user">
+      <img src="./images/avatar.jpg" alt="" id="user-image">
+
+      <p id="greeting" style="font-size: small;">welcome back,</p>
+      <p id="name">Mark boucher</p>
+
+    </div>
+
+
+    <div id="nav-links">
+      <a href="#" class="link-item">&#9733; Dashboard</a>
+      <a href="#" class="link-item">&#9733; statistics</a>
+      <a href="/register" class="link-item">&#9733; Register</a>
+      <a href="/home" class="link-item">&#9733; Home</a>
+      <a href="/play" class="link-item">&#9733; play</a>
+      <a href="/login" class="link-item">&#9733; Login</a>
+    </div>
+
+  </nav>
+  <main>
+    <div id="user-stats">
+
+      <div>
+        <heading style="font-size: large;">
+          Your stats
+        </heading>
+      </div>
+      <div id="stats-container">
+        <div class="stat" id="single-shots">
+          <heading>1X shots</heading>
+          <p class="stat-value"><%= userAllTimeStats.singleShots %></p>
+        </div>
+        <div class="stat" id="double-shots">
+          <heading>2X shots</heading>
+          <p class="stat-value"><%= userAllTimeStats.doubleShots %></p>
+        </div>
+        <div class="stat" id="triple-shots">
+          <heading>3X shots</heading>
+          <p class="stat-value"><%= userAllTimeStats.tripleShots %></p>
+        </div>
+        <div class="stat" id="highest-score">
+          <heading>highest score</heading>
+          <p class="stat-value"><%= userAllTimeStats.highestScore %></p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="container">
+      <div id="highest-scores-all-time">
+        <div>
+          <heading style="font-size: large;">
+            All time highest scores
+          </heading>
+        </div>
+        <% for(let user of allTimeHighestScores){ %>
+        <div class="all-time-user">
+          <img src="./images/avatar.jpg" alt="" class="all-time-user-image">
+          <p class="all-time-user-name">aakash deep</p>
+          <p><%= user.highestScore %></p>
+          <p>11-08-2023</p>
+        </div>
+        <% } %>
+
+      </div>
+      <div id="highest-scores-all-time">
+        <div>
+          <heading style="font-size: large;">
+            Recently played users
+          </heading>
+        </div>
+        <div class="all-time-user">
+          <img src="./images/avatar.jpg" alt="" class="all-time-user-image">
+          <p class="all-time-user-name">aakash deep</p>
+          <p>26589</p>
+          <p>11-08-2023</p>
+        </div>
+        <div class="all-time-user">
+          <img src="./images/avatar.jpg" alt="" class="all-time-user-image">
+          <p class="all-time-user-name">aakash deep</p>
+          <p>26589</p>
+          <p>11-08-2023</p>
+        </div>
+        <div class="all-time-user">
+          <img src="./images/avatar.jpg" alt="" class="all-time-user-image">
+          <p class="all-time-user-name">aakash deep</p>
+          <p>26589</p>
+          <p>11-08-2023</p>
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+  </main>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

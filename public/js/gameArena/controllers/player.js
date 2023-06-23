@@ -1,18 +1,15 @@
 class Player extends playerInputsController {
-      score;
       number;
       currentTetrominoIndex;
       playerBoardMatrix;
       count;
       constructor() {
             super();
-            this.score = 0;
             this.number = 1;
             this.currentTetrominoIndex = 0;
             this.createPlayerBoardMatrix();
             this.count = 0;
             this.updateCurrentTetromino();
-            this.setStartingPosition();
       }
       createPlayerBoardMatrix() {
             this.playerBoardMatrix = [];
@@ -71,7 +68,25 @@ class Player extends playerInputsController {
             });
       }
 
+      saveScoreInTheDatabase() {
+            console.log(this.score);
+            fetch("/matchStats", {
+                  method: "POST",
+                  headers: {
+                        "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(this.stats),
+            })
+                  .then((response) => {
+                        return response.json();
+                  })
+                  .then((data) => {
+                        console.log(data);
+                  });
+      }
+
       start() {
+            this.stats.timeStamp = new Date().toLocaleDateString();
             if (this.count == 30) {
                   if (playerone.isPossibleToMove("ArrowDown")) {
                         playerone.moveDown();
@@ -80,13 +95,18 @@ class Player extends playerInputsController {
                         this.updateplayerBoardMatrix();
                         const destroyableRows =
                               this.areThereAnydestroyableRows();
-                        if (destroyableRows) {
+                        if (destroyableRows.length > 0) {
                               this.destroy(destroyableRows);
+                              this.updateGameStats(destroyableRows.length);
                         }
                         this.updateCurrentTetromino();
                         if (this.isPossibleToMove("setStartingPosition")) {
                               this.setStartingPosition();
                         } else {
+                              gameOver.play();
+                              this.menu.classList.toggle("menu-toggle");
+                              console.log(JSON.stringify(this.stats));
+                              this.saveScoreInTheDatabase();
                               console.log("game over");
                               return;
                         }
@@ -96,4 +116,36 @@ class Player extends playerInputsController {
             }
             requestAnimationFrame(this.start.bind(this));
       }
+
+      reset() {
+            const destroyableRows = [];
+            this.playerBoardMatrix.forEach((row, index) => {
+                  if (row[15] > 0) {
+                        destroyableRows.push(index);
+                        row[15] = 0;
+                  }
+            });
+            destroyableRows.forEach((rowIndex) => {
+                  const row = this.playerBoardMatrix[rowIndex];
+                  row.forEach((cell) => {
+                        if (cell.colorClass) {
+                              cell.node.classList.toggle(cell.colorClass);
+                              cell.colorClass = "";
+                        }
+                  });
+            });
+
+            this.stats.score = 0;
+            this.stats.singleShots = 0;
+            this.stats.doubleShots = 0;
+            this.stats.tripleShots = 0;
+            this.stats.timeStamp = undefined;
+
+            this.scoreNode.innerText = "0";
+            this.singleShotNode.innerText = "0";
+            this.doubleShotNode.innerText = "0";
+            this.tripleShotNode.innerText = "0";
+      }
 }
+
+const playerone = new Player();

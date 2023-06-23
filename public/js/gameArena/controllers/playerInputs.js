@@ -9,12 +9,15 @@ class playerInputsController extends VisualUpdate {
             body.addEventListener("keydown", this.handleKeyDown.bind(this));
       }
 
-      handleKeyDown(e) {
+      async handleKeyDown(e) {
             if (e.key == "ArrowRight") {
+                  fall.play();
                   playerone.moveRight();
             } else if (e.key == "ArrowLeft") {
+                  fall.play();
                   playerone.moveLeft();
             } else if (e.key == "ArrowDown") {
+                  fall.play();
                   playerone.moveDown();
             } else if (e.key == " ") {
                   const setOfrotatedCoordinates = this.isRotationPossible();
@@ -22,6 +25,8 @@ class playerInputsController extends VisualUpdate {
                   if (setOfrotatedCoordinates) {
                         this.rotate(setOfrotatedCoordinates);
                   }
+            } else if (e.key == "Escape") {
+                  this.menu.classList.toggle("menu-toggle");
             }
       }
       moveRight() {
@@ -141,6 +146,7 @@ class playerInputsController extends VisualUpdate {
                         !y[coordinates[0]][coordinates[1]].colorClass
                   );
             });
+
             if (output) {
                   return setOfrotatedCoordinates;
             } else {

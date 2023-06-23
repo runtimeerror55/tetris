@@ -2,9 +2,14 @@
       box-sizing: border-box;
       margin: 0;
       border: none;
+      line-height: 1.6;
+}
+@font-face {
+      font-family: ff-mark;
+      src: url(../fonts/FF-Mark/MarkPro-Medium.otf);
 }
 body {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
             url("../images/homePageBackgroundImage.jpg");
       background-size: cover;
       background-position: center;
@@ -14,22 +19,8 @@ body {
       flex-direction: column;
       height: 100vh;
       align-items: center;
-}
-
-.navbar {
-      background-color: transparent !important;
-      width: 70vw;
-}
-
-.nav-link {
-      font-weight: bold;
-      padding: 1px !important;
-      margin-right: 4px;
-      margin-left: 4px;
-}
-
-.active {
-      border-bottom: 2px solid white;
+      font-family: ff-mark;
+      letter-spacing: 0.08rem;
 }
 
 main {
@@ -45,6 +36,17 @@ main {
 #introduction {
       color: white;
       width: 50%;
+      font-size: 32px;
+}
+
+.button {
+      border: 2px solid rgba(0, 255, 255, 1);
+      background-color: rgba(0, 255, 255, 0.5);
+      padding: 10px;
+      margin: 4px;
+}
+.button:hover {
+      box-shadow: 0 0 10px rgba(0, 255, 255, 1);
 }
 
 .button-link {

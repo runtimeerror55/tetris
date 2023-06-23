@@ -5,39 +5,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>game arena</title>
+
   <link rel="stylesheet" href="/css/gameArena.css">
+  <link rel="stylesheet" href="/css/navBar.css">
 </head>
+
+
 
 <body>
 
+  <%- include("./partials/navBar")%>
+
   <main>
+
     <div id="game-info">
-      <div class="info-item">name
-        <div>aakash</div>
-      </div>
 
-      <div class="info-item">Score: 25</div>
 
-      <div class="info-item">1X blast: 0</div>
-      <div class="info-item">2X blast: 1</div>
-      <div class="info-item">3X blast: 2</div>
-      <div class="info-item">4X blast: 0</div>
+      <div class="info-item" id="score">Score: 0</div>
+
+      <div class="info-item" id="single-shot">1X blast: 0</div>
+      <div class="info-item" id="double-shot">2X blast: 0</div>
+      <div class="info-item" id="triple-shot">3X blast: 0</div>
+      <button class="menu-item" id="pause-button">Pause</button>
+
     </div>
     <div class="container">
       <% for(let i=0;i<22;i++) { %>
       <div class="row" id="player-1-row-<%= i%>">
+        <span class="laser-beam" id="player-1-laser-beam-<%= i%>"></span>
         <% for(let j=0;j<15;j++){ %>
         <div class="column" id="player-1-column-<%= j%>"></div>
         <% } %>
       </div>
       <% } %>
+      <div class="menu">
+
+
+        <button class="menu-item" id="play-button">Play</button>
+
+
+
+      </div>
     </div>
+
 
 
 
   </main>
 
   <script src="/js/gameArena/gameConfiguration.js"></script>
+  <script src="/js/gameArena/controllers/gameStats.js"></script>
+  <script src="/js/gameArena/controllers/gameMenu.js"></script>
   <script src="/js/gameArena/controllers/destroy.js"></script>
 
   <script src="/js/gameArena/controllers/visualUpdate.js"></script>

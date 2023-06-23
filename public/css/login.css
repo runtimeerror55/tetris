@@ -1,0 +1,66 @@
+* {
+      box-sizing: border-box;
+      margin: 0;
+      border: none;
+      line-height: 1.6;
+}
+body {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+            url("../images/homePageBackgroundImage.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      font-family: cursive;
+      letter-spacing: 0.08rem;
+}
+main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+}
+
+form {
+      background-color: rgba(12, 12, 12);
+      border: 5px solid rgba(0, 255, 255, 1);
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+      height: 400px;
+
+      justify-content: space-around;
+      color: white;
+      align-items: center;
+}
+heading {
+      font-size: larger;
+}
+.label {
+      border-radius: 5px;
+}
+
+input {
+      border: 2px solid rgba(0, 255, 255, 1);
+      background-color: rgba(0, 255, 255, 0.5);
+      color: white;
+      width: 70%;
+}
+::placeholder {
+      color: white;
+}
+button {
+      border: 2px solid rgba(0, 255, 0, 1);
+      background-color: rgba(0, 255, 0, 0.5);
+      padding-left: 10px;
+      padding-right: 10px;
+      cursor: pointer;
+}
+button:hover {
+      box-shadow: 0 0 10px rgba(0, 255, 0, 1);
+}
