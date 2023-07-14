@@ -28,7 +28,7 @@ main {
 
 form {
       background-color: rgba(12, 12, 12);
-      border: 5px solid rgba(0, 255, 255, 1);
+      border: 3px solid rgba(0, 255, 255, 1);
       display: flex;
       flex-direction: column;
       width: 400px;
