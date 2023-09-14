@@ -46,3 +46,12 @@ client side js
 3. reset the game
 4. 500 random generated tetrominos
 5. generate binaryMatrix
+
+
+
+## game
+1. move left , right, down- params(tetrimino coordinates,binary matrix)
+2. rotate coordinates - params(tetrimino coordinates,binary matrix)
+3.  update currentTetromino - params(tetrimino coordintates)
+4.  generate binary matrix
+5.  
