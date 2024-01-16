@@ -1,57 +1,33 @@
-# tetris
-1. home page
-2. login page
-3. register page
-4. log out pate
-5. game arena page
-6. room joining page
-7. stats page
+                            
+ <h3>Introduction</h3>  
+ <p> A web-based Tetris game! Immerse yourself in the classic world of falling blocks and strategy as you challenge your skills and aim for high scores. Get ready to experience Tetris 
+    like never before, right in your web browser</p>
+<h3>Key functionalities</h3> 
 
+<ul>
+ <li>move down</li>
+ <li>move right</li>
+ <li>move left</li>
+ <li>generate board nodes matrix</li>
+ <li>destroying blocks</li>
+ <li>ui renderer</li>
+ <li>shifting blocks</li>
+ <li>updating player binary matrix</li>
+ <li>isPossibletoMove</li>
+ <li>update score</li>
+ <li>update currentTetromino</li>
+</ul>
 
-client side js
-1. controllers
-2. renderer
-3. game intitialisation
-
-
-# game functionalities
-## 1. inherited methods
-1. move down
-2. move right
-3. move left
-5. generate board nodes matrix
-6. destroy
-7. ui renderer
-8. shifting blocks
-9. update the binary matrix
-10. isPossibletoMove
-11. update score
-12. update currentTetromino
-
-
-
-
-# playerfunctionalities
-## 1. properties
-1. current tetromino
-2. score
-3. player number
-4. binaryMatrix
-5. borad nodes matrix
-6. inherited methods from game functionalities
-
- ## 2. static methods
-1. start the game
-2. end the game
-3. reset the game
-4. 500 random generated tetrominos
-5. generate binaryMatrix
-
-
-
-## game
-1. move left , right, down- params(tetrimino coordinates,binary matrix)
-2. rotate coordinates - params(tetrimino coordinates,binary matrix)
-3.  update currentTetromino - params(tetrimino coordintates)
-4.  generate binary matrix
-5.  
+<h3>Lannguages and tools used</h3>
+<ul>
+ <li>html</li>
+ <li>javscript</li>
+ <li>css</li><li>ejs</li>
+ <li>express</li>
+ <li>express-session</li>
+ <li>passport</li>
+ <li>passport-local</li>
+ <li>passport-local-mongoose</li>
+ <li>mongoose</li>
+ <li>express</li>
+</ul>
