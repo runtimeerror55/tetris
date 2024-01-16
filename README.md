@@ -1,4 +1,4 @@
-<h1>Tetris - 1.0</h1>                            
+<h1 align="center">Tetris - 1.0</h1>                            
  <h3>Introduction</h3>  
  <p> A web-based Tetris game! Immerse yourself in the classic world of falling blocks and strategy as you challenge your skills and aim for high scores. Get ready to experience Tetris 
     like never before, right in your web browser.</p>
