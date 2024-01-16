@@ -2,6 +2,19 @@
  <h3>Introduction</h3>  
  <p> A web-based Tetris game! Immerse yourself in the classic world of falling blocks and strategy as you challenge your skills and aim for high scores. Get ready to experience Tetris 
     like never before, right in your web browser</p>
+     <h3>Media</h3>  
+   <div>
+       <img width="400" src="https://res.cloudinary.com/diwrxz82u/image/upload/v1705344538/tetris-1.0/one_uyrrfk.png" alt="project">
+    
+<img   width="400" src="https://res.cloudinary.com/diwrxz82u/image/upload/v1705344540/tetris-1.0/two_ygxhx1.png" alt="project">
+ 
+<img  width="400" src="https://res.cloudinary.com/diwrxz82u/image/upload/v1705344541/tetris-1.0/three_bdfoxu.png" alt="project">
+    
+<img  width="400" src="https://res.cloudinary.com/diwrxz82u/image/upload/v1705344543/tetris-1.0/four_hhflqb.png" alt="project">
+      
+<img  width="400" src="https://res.cloudinary.com/diwrxz82u/image/upload/v1705344545/tetris-1.0/five_nauaek.png" alt="project">
+    
+     </div>
 <h3>Key functionalities</h3> 
 
 <ul>
