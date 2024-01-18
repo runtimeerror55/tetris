@@ -10,6 +10,7 @@ const LocalStrategy = require("passport-local");
 const authenticationRouter = require("./src/routes/authentication.js");
 const homeRouter = require("./src/routes/home.js");
 
+const path = require("path");
 // mongoose
 //       .connect("mongodb://127.0.0.1:27017/tetris")
 //       .then(() => {
