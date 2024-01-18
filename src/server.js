@@ -10,14 +10,14 @@ const LocalStrategy = require("passport-local");
 const authenticationRouter = require("./routes/authentication.js");
 const homeRouter = require("./routes/home.js");
 
-mongoose
-      .connect("mongodb://127.0.0.1:27017/tetris")
-      .then(() => {
-            console.log("connected to mongodb");
-      })
-      .catch((e) => {
-            console.log(e);
-      });
+// mongoose
+//       .connect("mongodb://127.0.0.1:27017/tetris")
+//       .then(() => {
+//             console.log("connected to mongodb");
+//       })
+//       .catch((e) => {
+//             console.log(e);
+//       });
 
 app.use(
       session({
@@ -37,7 +37,7 @@ passport.use(new LocalStrategy(UserModel.authenticate()));
 passport.serializeUser(UserModel.serializeUser());
 passport.deserializeUser(UserModel.deserializeUser());
 
-app.use(express.static("public"));
+// app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.set("view engine", "ejs");
