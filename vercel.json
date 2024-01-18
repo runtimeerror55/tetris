@@ -10,12 +10,8 @@
                   "source": "/(.*)",
                   "headers": [
                         {
-                              "key": "Access-Control-Allow-Credentials",
-                              "value": "true"
-                        },
-                        {
                               "key": "Access-Control-Allow-Origin",
-                              "value": "https://ecommerce-fawn-pi-63.vercel.app"
+                              "value": "*"
                         },
                         {
                               "key": "Access-Control-Allow-Methods",

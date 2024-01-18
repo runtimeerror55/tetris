@@ -49,10 +49,13 @@ passport.serializeUser(UserModel.serializeUser());
 passport.deserializeUser(UserModel.deserializeUser());
 
 // app.use(express.static("public"));
+// app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "views")));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.set("views", "src/views");
 
 // app.get("/", (request, response) => {
 //       response.render("partials/navBar");
