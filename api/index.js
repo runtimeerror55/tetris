@@ -1,14 +1,14 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const UserModel = require("./src/models/user.js");
-const matchStatsModel = require("./src/models/matchStats.js");
-const UserAllTimeStatsModel = require("./src/models/userAllTimeStats.js");
+const UserModel = require("../src/models/user.js");
+const matchStatsModel = require("../src/models/matchStats.js");
+const UserAllTimeStatsModel = require("../src/models/userAllTimeStats.js");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const authenticationRouter = require("./src/routes/authentication.js");
-const homeRouter = require("./src/routes/home.js");
+const authenticationRouter = require("../src/routes/authentication.js");
+const homeRouter = require("../src/routes/home.js");
 
 const path = require("path");
 // mongoose
@@ -50,8 +50,8 @@ passport.serializeUser(UserModel.serializeUser());
 passport.deserializeUser(UserModel.deserializeUser());
 
 // app.use(express.static("public"));
-// app.use(express.static(path.join(__dirname, "public")));
-// app.use(express.static(path.join(__dirname, "views")));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "views")));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
