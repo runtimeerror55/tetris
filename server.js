@@ -1,14 +1,14 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const UserModel = require("./models/user.js");
-const matchStatsModel = require("./models/matchStats.js");
-const UserAllTimeStatsModel = require("./models/userAllTimeStats.js");
+const UserModel = require("./src/models/user.js");
+const matchStatsModel = require("./src/models/matchStats.js");
+const UserAllTimeStatsModel = require("./src/models/userAllTimeStats.js");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const authenticationRouter = require("./routes/authentication.js");
-const homeRouter = require("./routes/home.js");
+const authenticationRouter = require("./src/routes/authentication.js");
+const homeRouter = require("./src/routes/home.js");
 
 // mongoose
 //       .connect("mongodb://127.0.0.1:27017/tetris")
@@ -18,6 +18,17 @@ const homeRouter = require("./routes/home.js");
 //       .catch((e) => {
 //             console.log(e);
 //       });
+
+mongoose
+      .connect(
+            "mongodb+srv://aakashdeep954:a1S6mNXvLK0b158x@portfoliocluster.c1qp6ud.mongodb.net/tetrisLatest?retryWrites=true&w=majority"
+      )
+      .then(() => {
+            console.log("connected to mongodb");
+      })
+      .catch((e) => {
+            console.log(e);
+      });
 
 app.use(
       session({
@@ -37,7 +48,7 @@ passport.use(new LocalStrategy(UserModel.authenticate()));
 passport.serializeUser(UserModel.serializeUser());
 passport.deserializeUser(UserModel.deserializeUser());
 
-// app.use(express.static("public"));
+app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.set("view engine", "ejs");
