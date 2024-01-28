@@ -24,7 +24,7 @@ class GameMenu extends GameStats {
       }
 }
 
-const laserGunShotSound = new Audio("../sounds/laserGunShot.wav");
-const fall = new Audio("../sounds/fireball.wav");
-const glassBreak = new Audio("../sounds/bonus.wav");
-const gameOver = new Audio("../sounds/gameOver.wav");
+const laserGunShotSound = new Audio("public/sounds/laserGunShot.wav");
+const fall = new Audio("public/sounds/fireball.wav");
+const glassBreak = new Audio("public/sounds/bonus.wav");
+const gameOver = new Audio("public/sounds/gameOver.wav");
