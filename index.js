@@ -54,7 +54,7 @@ passport.deserializeUser(UserModel.deserializeUser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.set("views", __dirname + "\\src\\views");
+app.set("views", __dirname + "/src/views");
 app.set("view engine", "ejs");
 
 // app.get("/", (request, response) => {
