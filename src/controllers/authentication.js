@@ -13,6 +13,7 @@ module.exports.registerUser = async (request, response) => {
             if (error) {
                   console.log(error);
             }
+
             response.redirect("/play");
       });
 };
