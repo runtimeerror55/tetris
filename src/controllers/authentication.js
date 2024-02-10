@@ -8,7 +8,7 @@ module.exports.registerUser = async (request, response) => {
       const { email, username, password } = request.body;
       const newUser = new UserModel({ email, username });
       const registeredUser = await UserModel.register(newUser, password);
-      console.log(registeredUser);
+
       request.login(registeredUser, (error) => {
             if (error) {
                   console.log(error);
@@ -18,9 +18,11 @@ module.exports.registerUser = async (request, response) => {
 };
 
 module.exports.renderLoginPage = (request, resoponse) => {
-      resoponse.render("login");
+      const user = request.user;
+      resoponse.render("login", { user });
 };
 
 module.exports.renderRegisterPage = (request, response) => {
-      response.render("register");
+      const user = request.user;
+      response.render("register", { user });
 };

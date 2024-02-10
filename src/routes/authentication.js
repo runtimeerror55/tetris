@@ -16,6 +16,12 @@ router.route("/login").post(
       }),
       loginUser
 );
+
+router.route("/logout").get((request, response) => {
+      request.logout(() => {
+            response.redirect("/login");
+      });
+});
 router.route("/register").post(registerUser);
 router.route("/register").get(renderRegisterPage);
 

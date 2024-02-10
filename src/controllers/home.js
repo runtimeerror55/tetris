@@ -2,7 +2,8 @@ const UserAllTimeStatsModel = require("../models/userAllTimeStats");
 const matchStatsModel = require("../models/matchStats");
 
 module.exports.renderHomePage = (request, response) => {
-      response.render("home");
+      const user = request.user;
+      response.render("home", { user });
 };
 
 module.exports.renderStatsPage = async (request, response) => {
@@ -17,7 +18,8 @@ module.exports.renderStatsPage = async (request, response) => {
 };
 
 module.exports.renderPlayPage = (request, response) => {
-      response.render("gameArena");
+      const user = request.user;
+      response.render("gameArena", { user });
 };
 
 module.exports.matchStats = async (request, response) => {
@@ -25,7 +27,6 @@ module.exports.matchStats = async (request, response) => {
       const id = request.user._id;
       matchStats.author = id;
       const newMatchStats = new matchStatsModel(matchStats);
-      console.log(newMatchStats);
       await newMatchStats.save();
 
       const userAllTimeStats = await UserAllTimeStatsModel.findOne({
@@ -43,7 +44,6 @@ module.exports.matchStats = async (request, response) => {
                   matches: [newMatchStats._id],
             });
             await newUserAllTimeStats.save();
-            console.log(newUserAllTimeStats);
       } else {
             const x = userAllTimeStats;
             const y = matchStats;
@@ -56,7 +56,6 @@ module.exports.matchStats = async (request, response) => {
             x.averageScore = (x.averageScore + y.score) / x.matchesPlayed;
             x.matches.push(newMatchStats);
             await x.save();
-            console.log(x, "second");
       }
 
       response.send('{"value": "successfully saved"}');
