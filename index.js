@@ -10,6 +10,9 @@ const LocalStrategy = require("passport-local");
 const authenticationRouter = require("./src/routes/authentication.js");
 const homeRouter = require("./src/routes/home.js");
 
+if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+      require("dotenv").config({ path: __dirname + "\\.env" });
+}
 const path = require("path");
 // mongoose
 //       .connect("mongodb://127.0.0.1:27017/tetris")
@@ -21,9 +24,7 @@ const path = require("path");
 //       });
 
 mongoose
-      .connect(
-            "mongodb+srv://aakashdeep954:a1S6mNXvLK0b158x@portfoliocluster.c1qp6ud.mongodb.net/tetrisLatest?retryWrites=true&w=majority"
-      )
+      .connect(process.env.hosted_db_url)
       .then(() => {
             console.log("connected to mongodb");
       })
@@ -60,6 +61,7 @@ app.set("view engine", "ejs");
 // app.get("/", (request, response) => {
 //       response.render("partials/navBar");
 // });
+
 app.use("/", authenticationRouter);
 app.use("/", homeRouter);
 
