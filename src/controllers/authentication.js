@@ -8,7 +8,6 @@ module.exports.registerUser = async (request, response) => {
       const { email, username, password } = request.body;
       const newUser = new UserModel({ email, username });
       const registeredUser = await UserModel.register(newUser, password);
-
       request.login(registeredUser, (error) => {
             if (error) {
                   console.log(error);
