@@ -16,6 +16,11 @@ module.exports.renderStatsPage = async (request, response) => {
             .sort({ highestScore: -1 })
             .limit(5);
 
+      allTimeHighestScores.forEach((user) => {
+            let date = new Date(user.highestScoreDate);
+            user.highestScoreDate = date.toLocaleString();
+      });
+
       response.render("stats", { userAllTimeStats, allTimeHighestScores });
 };
 
@@ -51,6 +56,11 @@ module.exports.matchStats = async (request, response) => {
             const y = matchStats;
             x.highestScore =
                   x.highestScore < y.score ? y.score : x.highestScore;
+
+            if (x.highestScore <= y.score) {
+                  let date = new Date();
+                  x.highestScoreDate = date.toISOString();
+            }
             x.singleShots += y.singleShots;
             x.doubleShots += y.doubleShots;
             x.tripleShots += y.tripleShots;

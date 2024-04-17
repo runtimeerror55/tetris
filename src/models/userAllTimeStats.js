@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const userAllTimeStatsSchema = mongoose.Schema({
       highestScore: Number,
+      highestScoreDate: Date,
       averageScore: Number,
       singleShots: Number,
       doubleShots: Number,
