@@ -18,7 +18,9 @@ module.exports.renderStatsPage = async (request, response) => {
 
       allTimeHighestScores.forEach((user) => {
             let date = new Date(user.highestScoreDate);
-            user.highestScoreDate = date.toLocaleString();
+            user.highestScoreDate = `${date.getDate()}/${
+                  date.getMonth() + 1
+            }/${date.getFullYear()}`;
       });
 
       response.render("stats", { userAllTimeStats, allTimeHighestScores });
