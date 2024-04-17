@@ -14,7 +14,7 @@
 
 
 
-  <nav class="navbar">
+  <!-- <nav class="navbar">
     <div id="logo">TETRIS</div>
     <div id="user">
       <img src="public/images/avatar.jpg" alt="" id="user-image">
@@ -34,7 +34,7 @@
       <a href="/login" class="link-item">&#9733; Login</a>
     </div>
 
-  </nav>
+  </nav> -->
   <main>
     <div id="user-stats">
 
@@ -74,7 +74,7 @@
         <% for(let user of allTimeHighestScores){ %>
         <div class="all-time-user">
           <img src="public/images/avatar.jpg" alt="" class="all-time-user-image">
-          <p class="all-time-user-name">aakash deep</p>
+          <p class="all-time-user-name"><%= user?.author?.username %></p>
           <p><%= user.highestScore %></p>
           <p>11-08-2023</p>
         </div>
@@ -82,7 +82,7 @@
 
       </div>
       <div id="highest-scores-all-time">
-        <div>
+        <!-- <div>
           <heading style="font-size: large;">
             Recently played users
           </heading>
@@ -104,7 +104,7 @@
           <p class="all-time-user-name">aakash deep</p>
           <p>26589</p>
           <p>11-08-2023</p>
-        </div>
+        </div> -->
 
       </div>
 

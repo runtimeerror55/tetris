@@ -12,8 +12,10 @@ module.exports.renderStatsPage = async (request, response) => {
             author: authorId,
       });
       const allTimeHighestScores = await UserAllTimeStatsModel.find({})
+            .populate("author")
             .sort({ highestScore: -1 })
             .limit(5);
+
       response.render("stats", { userAllTimeStats, allTimeHighestScores });
 };
 
