@@ -80,6 +80,11 @@ main {
       background-color: black;
 }
 
+.control {
+      color: white;
+      font-size: 14px;
+}
+
 .menu-item {
       width: 100px;
       padding: 5px;
