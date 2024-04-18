@@ -18,7 +18,7 @@ module.exports.renderStatsPage = async (request, response) => {
 
       allTimeHighestScores.forEach((user) => {
             let date = new Date(user.highestScoreDate);
-            user.highestScoreDate = `${date.getDate()}/${
+            user.scoreDate = `${date.getDate()}/${
                   date.getMonth() + 1
             }/${date.getFullYear()}`;
       });
@@ -41,9 +41,11 @@ module.exports.matchStats = async (request, response) => {
       const userAllTimeStats = await UserAllTimeStatsModel.findOne({
             author: id,
       });
+      let date = new Date();
       if (!userAllTimeStats) {
             const newUserAllTimeStats = new UserAllTimeStatsModel({
                   highestScore: matchStats.score,
+                  highestScoreDate: date.toISOString(),
                   averageScore: matchStats.score,
                   singleShots: matchStats.singleShots,
                   doubleShots: matchStats.doubleShots,
@@ -60,7 +62,6 @@ module.exports.matchStats = async (request, response) => {
                   x.highestScore < y.score ? y.score : x.highestScore;
 
             if (x.highestScore <= y.score) {
-                  let date = new Date();
                   x.highestScoreDate = date.toISOString();
             }
             x.singleShots += y.singleShots;
