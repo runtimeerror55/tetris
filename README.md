@@ -1,3 +1,7 @@
+## to do
+
+1. add environment varibles
+
 <h1 align="center">Tetris - 1.0</h1>                            
  <h3>Introduction</h3>  
  <p> A web-based Tetris game! Immerse yourself in the classic world of falling blocks and strategy as you challenge your skills and aim for high scores. Get ready to experience Tetris 
@@ -15,7 +19,7 @@
 <img  width="400" src="https://res.cloudinary.com/diwrxz82u/image/upload/v1705344545/tetris-1.0/five_nauaek.png" alt="project">
     
    
-<h3>Key functionalities</h3> 
+<h3>Key functionalities</h3>
 
 <ul>
  <li>moving player curent tetromino in downward direction</li>
@@ -38,15 +42,17 @@
 </ul>
 
 <h3>Lannguages and tools used</h3>
-<ul>
- <li>html</li>
- <li>javscript</li>
- <li>css</li><li>ejs</li>
- <li>express</li>
- <li>express-session</li>
- <li>passport</li>
- <li>passport-local</li>
- <li>passport-local-mongoose</li>
- <li>mongoose</li>
- <li>express</li>
-</ul>
+ <ul>
+    <li>html</li>
+    <li>javscript</li>
+    <li>css</li>
+    <li>ejs</li>
+    <li>express</li>
+    <li>express-session</li>
+    <li>passport</li>
+    <li>passport-local</li>
+    <li>passport-local-mongoose</li>
+    <li>mongoose</li>
+    <li>mongodDb</li>
+    <li>vercel</li>
+  </ul>
