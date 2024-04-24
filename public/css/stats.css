@@ -10,7 +10,7 @@
 body {
       background-color: #f8f7f1;
       display: flex;
-      font-family: speigel;
+      font-family: "cursive", serif;
 }
 .navbar {
       height: 100vh;

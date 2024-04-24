@@ -14,14 +14,6 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
       require("dotenv").config({ path: __dirname + "\\.env" });
 }
 const path = require("path");
-mongoose
-      .connect("mongodb://127.0.0.1:27017/tetris")
-      .then(() => {
-            console.log("connected to mongodb");
-      })
-      .catch((e) => {
-            console.log(e);
-      });
 
 mongoose
       .connect(process.env.hosted_db_url)
