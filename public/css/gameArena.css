@@ -40,7 +40,7 @@ main {
 .laser-beam {
       width: 0px;
       height: 5px;
-      background-color: rgba(255, 0, 0, 0.7npn);
+      background-color: rgba(255, 0, 0, 0.7);
       box-shadow: 0 0 10px red;
       transition: width 0.016s linear;
       position: absolute;

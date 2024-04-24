@@ -4,7 +4,7 @@
       border: none;
 }
 @font-face {
-      font-family: speigel;
+      font-family: speigel, sans-serif;
       src: url(../fonts/FF-Mark/MarkPro-Medium.otf);
 }
 body {
@@ -75,7 +75,7 @@ main {
       margin: 5px;
 }
 
-heading {
+.heading {
       font-size: small;
       font-weight: bold;
 }

@@ -38,7 +38,8 @@ form {
       color: white;
       align-items: center;
 }
-heading {
+
+.heading {
       font-size: larger;
 }
 .label {

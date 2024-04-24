@@ -5,7 +5,7 @@
       line-height: 1.6;
 }
 @font-face {
-      font-family: ff-mark;
+      font-family: ff-mark, sans-serif;
       src: url(../fonts/FF-Mark/MarkPro-Medium.otf);
 }
 body {

@@ -14,14 +14,14 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
       require("dotenv").config({ path: __dirname + "\\.env" });
 }
 const path = require("path");
-// mongoose
-//       .connect("mongodb://127.0.0.1:27017/tetris")
-//       .then(() => {
-//             console.log("connected to mongodb");
-//       })
-//       .catch((e) => {
-//             console.log(e);
-//       });
+mongoose
+      .connect("mongodb://127.0.0.1:27017/tetris")
+      .then(() => {
+            console.log("connected to mongodb");
+      })
+      .catch((e) => {
+            console.log(e);
+      });
 
 mongoose
       .connect(process.env.hosted_db_url)
@@ -50,17 +50,11 @@ passport.use(new LocalStrategy(UserModel.authenticate()));
 passport.serializeUser(UserModel.serializeUser());
 passport.deserializeUser(UserModel.deserializeUser());
 
-// app.use(express.static("public"));
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.set("views", __dirname + "/src/views");
 app.set("view engine", "ejs");
-
-// app.get("/", (request, response) => {
-//       response.render("partials/navBar");
-// });
 
 app.use("/", authenticationRouter);
 app.use("/", homeRouter);
